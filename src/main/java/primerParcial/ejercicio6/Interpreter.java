@@ -10,20 +10,20 @@ public class Interpreter extends Descripcion{
     private Context context;
 
     public Interpreter(String msgToInterpreter){
-        context = new Context(msgToInterpreter.replace(" ",""));
+        context = new Context(msgToInterpreter);
         for ( String charOriginal :  msgToInterpreter.split(" ")) {
             switch (charOriginal){
                 case "Como":
-                    grammar.add(new Como());
+                    grammar.add(new Como(charOriginal.length()));
                     break;
                 case "Quiero":
-                    grammar.add(new Quiero());
+                    grammar.add(new Quiero(charOriginal.length()));
                     break;
                 case "Para":
-                    grammar.add(new Para());
+                    grammar.add(new Para(charOriginal.length()));
                     break;
                 default:
-                    grammar.add(new Para());
+                    grammar.add(new Espacio(charOriginal.length()));
                     break;
 
 
